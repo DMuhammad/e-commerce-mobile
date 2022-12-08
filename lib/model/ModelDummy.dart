@@ -1,0 +1,1 @@
+//ojo nulis kode ndek kene
