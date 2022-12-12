@@ -4,7 +4,8 @@ import 'package:uas_mobile/model/products.dart';
 Future<List<Product>> fetchProduct() async {
   List<Product> dataproduct;
 
-  Response response = await get(Uri.parse('https://dummyjson.com/products'));
+  Response response =
+      await get(Uri.parse('https://dummyjson.com/products?limit=10'));
 
   if (response.statusCode == 200) {
     final product = produkFromJson(response.body);
