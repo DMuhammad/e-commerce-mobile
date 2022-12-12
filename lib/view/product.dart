@@ -9,18 +9,33 @@ class ProductPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<Product>>(
-      future: fetchProduct(),
-      builder: (context, snapshot) {
-        if (snapshot.hasError) {
-          const Center(
-            child: Text("Gagal ambil data"),
-          );
-        }
-        return snapshot.hasData
-            ? ListProduct(product: snapshot.data)
-            : const Center(child: CircularProgressIndicator());
-      },
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(0xff242231),
+        centerTitle: true,
+        title: Text(
+          'Popular Products',
+          style: GoogleFonts.poppins(
+            color: const Color(0xffE1E1E1),
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ),
+      body: FutureBuilder<List<Product>>(
+        future: fetchProduct(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            const Center(
+              child: Text("Gagal ambil data"),
+            );
+          }
+          return snapshot.hasData
+              ? ListProduct(product: snapshot.data)
+              : const Center(child: CircularProgressIndicator());
+        },
+      ),
+      backgroundColor: const Color(0xff242231),
     );
   }
 }
@@ -38,6 +53,7 @@ class _ListProductState extends State<ListProduct> {
 
   @override
   void initState() {
+    super.initState();
     result = widget.product;
   }
 
@@ -48,18 +64,6 @@ class _ListProductState extends State<ListProduct> {
 
   @override
   Widget build(BuildContext context) {
-    Widget allProductTitle() {
-      return Container(
-        child: Text(
-          'Popular Products',
-          style: GoogleFonts.poppins(
-              color: const Color(0xff6C5ECF),
-              fontSize: 22,
-              fontWeight: FontWeight.w600),
-        ),
-      );
-    }
-
     return Center(
       child: ListView.builder(
         itemCount: result!.length,
@@ -75,6 +79,7 @@ class _ListProductState extends State<ListProduct> {
                   ));
             },
             child: Card(
+              color: const Color(0xff999999),
               margin: const EdgeInsets.only(top: 14),
               child: Row(
                 children: [
@@ -95,7 +100,7 @@ class _ListProductState extends State<ListProduct> {
                           Text(
                             result![index].brand,
                             style: GoogleFonts.poppins(
-                              color: const Color(0xff999999),
+                              color: const Color(0xff504F5E),
                               fontSize: 12,
                             ),
                           ),
@@ -105,16 +110,19 @@ class _ListProductState extends State<ListProduct> {
                               child: Text(
                                 result![index].title,
                                 style: GoogleFonts.poppins(
-                                  color: const Color(0xff2E2E2E),
                                   fontSize: 18,
                                   fontWeight: FontWeight.w600,
                                 ),
                               )),
-                          Text(result![index].category),
+                          Text(
+                            result![index].category,
+                            style: GoogleFonts.poppins(
+                              fontSize: 12,
+                            ),
+                          ),
                           Text(
                             "Price: \$${result![index].price}",
                             style: GoogleFonts.poppins(
-                              color: const Color(0xff2C96F1),
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
                             ),

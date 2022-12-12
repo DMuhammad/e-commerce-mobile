@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uas_mobile/view/product.dart';
+import 'package:uas_mobile/view/liveSupport.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -13,7 +14,7 @@ class Home extends StatelessWidget {
           bottom: const TabBar(
             tabs: [
               Tab(icon: Icon(Icons.list)),
-              Tab(icon: Icon(Icons.category)),
+              Tab(icon: Icon(Icons.live_help)),
               Tab(icon: Icon(Icons.person)),
             ],
           ),
@@ -23,7 +24,7 @@ class Home extends StatelessWidget {
         body: const TabBarView(
           children: [
             ProductPage(),
-            ProductPage(),
+            ChatPage(),
             ProductPage(),
           ],
         ),
