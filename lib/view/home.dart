@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uas_mobile/view/profile.dart';
 import 'package:uas_mobile/view/product.dart';
 import 'package:uas_mobile/view/liveSupport.dart';
 
@@ -25,7 +26,7 @@ class Home extends StatelessWidget {
           children: [
             ProductPage(),
             ChatPage(),
-            ProductPage(),
+            ProfilePage(),
           ],
         ),
         backgroundColor: const Color(0xff242231),
