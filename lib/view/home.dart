@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:uas_mobile/view/profile.dart';
 import 'package:uas_mobile/view/product.dart';
 import 'package:uas_mobile/view/liveSupport.dart';
+import 'package:uas_mobile/view/picker.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -29,7 +30,6 @@ class Home extends StatelessWidget {
             ProfilePage(),
           ],
         ),
-        backgroundColor: const Color(0xff242231),
       ),
     );
   }

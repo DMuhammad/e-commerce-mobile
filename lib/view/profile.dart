@@ -1,84 +1,133 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ProfilePage extends StatefulWidget {
+class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
   @override
-  State<ProfilePage> createState() => _ProfilePageState();
-}
-
-class _ProfilePageState extends State<ProfilePage> {
-  List members = [
-    {
-      'name': 'Muhammad Khoirul Huda',
-      'nim': '200605110085',
-      'profile': 'huda_tampan.jpg',
-      'biodata': 'Saya adalah seorang mahasiswa di Universitas Islam Negeri Maulana Malik Ibrahim Malang',
-    },
-    {
-      'name': 'M. Royhan Daffa',
-      'nim': '200605110104',
-      'profile': 'royhan.jpg',
-      'biodata': 'Saya adalah seorang mahasiswa di Universitas Islam Negeri Maulana Malik Ibrahim Malang',
-    },
-    {
-      'name': 'Muhammad Dzikri Zulkifly Riskha',
-      'nim': '200605110053',
-      'profile': 'dzikri.jpg',
-      'biodata': 'Saya adalah seorang mahasiswa di Universitas Islam Negeri Maulana Malik Ibrahim Malang',
-    },
-    {
-      'name': 'Yoga Pratama Kusendi',
-      'nim': '200605110084',
-      'profile': 'yoga.jpg',
-      'biodata': 'Saya adalah seorang mahasiswa di Universitas Islam Negeri Maulana Malik Ibrahim Malang',
-    }
-  ];
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+    Widget header() {
+      return AppBar(
+        automaticallyImplyLeading: false,
+        elevation: 0,
         backgroundColor: const Color(0xff242231),
-        centerTitle: true,
-        title: Text(
-          'Member Profile',
-          style: GoogleFonts.poppins(
-            color: const Color(0xffE1E1E1),
-            fontSize: 18,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ),
-      body: Container(
-        color: const Color(0xff242231),
-        padding: const EdgeInsets.only(top: 10),
-        child: ListView.builder(
-          itemCount: members.length,
-          itemBuilder: (context, index) => Card(
-            color: const Color(0xff999999),
-            elevation: 3.0,
-            margin: const EdgeInsets.only(top: 10, left: 10, right: 10),
-            child: ListTile(
-              leading: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(100),
-                  image: DecorationImage(
-                    image: AssetImage("assets/${members[index]['profile']}"),
-                    fit: BoxFit.cover,
+        flexibleSpace: SafeArea(
+          child: Container(
+            padding: const EdgeInsets.all(30),
+            child: Row(
+              children: [
+                const ClipOval(),
+                const SizedBox(
+                  width: 16,
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Hallo, Dzikri',
+                        style: GoogleFonts.poppins(
+                          color: const Color(0xffE1E1E1),
+                          fontSize: 24,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      Text(
+                        '@dzikrimuhammad',
+                        style: GoogleFonts.poppins(
+                          color: const Color(0xff504F5E),
+                          fontSize: 16,
+                        ),
+                      )
+                    ],
                   ),
                 ),
-                height: 50,
-                width: 50,
-              ),
-              title: Text(members[index]['name']),
-              subtitle: Text(members[index]['nim']),
-              onTap: () {},
+              ],
             ),
           ),
         ),
-      ),
+      );
+    }
+
+    Widget menuItem(String txt) {
+      return Container(
+        margin: const EdgeInsets.only(
+          top: 16,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              txt,
+              style: GoogleFonts.poppins(
+                color: const Color(0xff999999),
+                fontSize: 13,
+              ),
+            ),
+            const Icon(
+              Icons.chevron_right,
+              color: Color(0xffE1E1E1),
+            ),
+          ],
+        ),
+      );
+    }
+
+    Widget content() {
+      return Expanded(
+        child: Container(
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(
+            horizontal: 30,
+          ),
+          decoration: const BoxDecoration(
+            color: Color(0xff242231),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(
+                height: 20,
+              ),
+              Text(
+                'Account',
+                style: GoogleFonts.poppins(
+                  color: const Color(0xffE1E1E1),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              GestureDetector(
+                onTap: () {},
+                child: menuItem('Edit Profile'),
+              ),
+              menuItem('Your Orders'),
+              menuItem('Help'),
+              const SizedBox(
+                height: 30,
+              ),
+              Text(
+                'General',
+                style: GoogleFonts.poppins(
+                  color: const Color(0xffE1E1E1),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              menuItem('Privacy & Policy'),
+              menuItem('Terms & Conditions'),
+              menuItem('Rate App'),
+            ],
+          ),
+        ),
+      );
+    }
+
+    return Column(
+      children: [
+        header(),
+        content(),
+      ],
     );
   }
 }

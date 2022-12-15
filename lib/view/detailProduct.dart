@@ -24,7 +24,9 @@ class DetailProduct extends StatelessWidget {
               child: Text("Gagal ambil data"),
             );
           }
-          return snapshot.hasData ? TampilDetailProduct(datadetailproduk: snapshot.data) : const Center(child: CircularProgressIndicator());
+          return snapshot.hasData
+              ? TampilDetailProduct(datadetailproduk: snapshot.data)
+              : const Center(child: CircularProgressIndicator());
         },
       ),
     );
@@ -32,7 +34,8 @@ class DetailProduct extends StatelessWidget {
 }
 
 class TampilDetailProduct extends StatelessWidget {
-  const TampilDetailProduct({Key? key, required this.datadetailproduk}) : super(key: key);
+  const TampilDetailProduct({Key? key, required this.datadetailproduk})
+      : super(key: key);
   final DetailProduk? datadetailproduk;
 
   @override
@@ -72,59 +75,67 @@ class TampilDetailProduct extends StatelessWidget {
                           children: [
                             Text(
                               datadetailproduk!.title,
-                              style: GoogleFonts.poppins(color: const Color(0xffE1E1E1), fontSize: 20, fontWeight: FontWeight.w600),
+                              style: GoogleFonts.poppins(
+                                  color: const Color(0xffE1E1E1),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w600),
                             ),
                             Text(
                               "\$${datadetailproduk!.price}",
-                              style: GoogleFonts.poppins(color: const Color(0xff2C96F1), fontSize: 18, fontWeight: FontWeight.w600),
+                              style: GoogleFonts.poppins(
+                                  color: const Color(0xff2C96F1),
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600),
                             ),
                           ],
                         ),
                       ),
                       Text(
                         datadetailproduk!.brand,
-                        style: GoogleFonts.poppins(color: const Color(0xff999999)),
+                        style:
+                            GoogleFonts.poppins(color: const Color(0xff999999)),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Text(
                         'Rating : ${datadetailproduk!.rating}/5',
                         style: GoogleFonts.poppins(color: Colors.white),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Text(
                         'Stock : ${datadetailproduk!.stock}',
                         style: GoogleFonts.poppins(color: Colors.white),
                       ),
-                      Container(
-                        padding: const EdgeInsets.all(16),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Description',
-                              style: GoogleFonts.poppins(
-                                color: Colors.white,
-                                height: 1.5,
-                                fontSize: 14,
-                              ),
-                            ),
-                            Text(
-                              datadetailproduk!.description,
-                              style: GoogleFonts.poppins(
-                                color: const Color(0xff999999),
-                                height: 1.5,
-                                fontSize: 14,
-                              ),
-                              softWrap: true,
-                              textAlign: TextAlign.justify,
-                            ),
-                          ],
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        'Description :',
+                        style: GoogleFonts.poppins(
+                          color: Colors.white,
+                          height: 1.5,
+                          fontSize: 14,
                         ),
                       ),
+                      Text(
+                        datadetailproduk!.description,
+                        style: GoogleFonts.poppins(
+                          color: const Color(0xff999999),
+                          height: 1.5,
+                          fontSize: 12,
+                        ),
+                      ),
+                      // Container(
+                      //   padding: const EdgeInsets.all(16),
+                      //   child: Column(
+                      //     crossAxisAlignment: CrossAxisAlignment.start,
+                      //     children: [
+                      //     ],
+                      //   ),
+                      // ),
                     ],
                   ),
                 ),

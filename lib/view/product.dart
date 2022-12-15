@@ -10,18 +10,6 @@ class ProductPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(0xff242231),
-        centerTitle: true,
-        title: Text(
-          'Popular Products',
-          style: GoogleFonts.poppins(
-            color: const Color(0xffE1E1E1),
-            fontSize: 18,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ),
       body: FutureBuilder<List<Product>>(
         future: fetchProduct(),
         builder: (context, snapshot) {
